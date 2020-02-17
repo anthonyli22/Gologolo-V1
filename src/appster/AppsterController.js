@@ -144,6 +144,7 @@ export default class AppsterController {
    */
   processCancelDeleteWork() {
     // JUST HIDE THE DIALOG
+    this.model.view.hideDialog(); //Changed this part
   }
 
   /**
@@ -175,8 +176,8 @@ export default class AppsterController {
    * button, i.e. the delete button, in order to delete the
    * list being edited.
    */
-  processDeleteWork() {
+  processDeleteWork = () => {
     // VERIFY VIA A DIALOG BOX
-    window.todo.model.view.showDialog();
-  }
+    this.model.view.showDialog();
+  };
 }

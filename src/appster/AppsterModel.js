@@ -122,5 +122,14 @@ export default class AppsterModel {
     this.view.loadListData(this.listToEdit);
   }
 
-  goList() {}
+  goList() {
+    this.view.showCreateNewWorkModal();
+
+    console.log(" sdssd");
+    // for (let i = 0; i < this.recentWork.length; i++) {
+    //   if (this.recentWork[i].getName === newWork) {
+    //     return false;
+    //   }
+    // }
+  }
 }
