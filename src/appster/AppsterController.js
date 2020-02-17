@@ -61,6 +61,28 @@ export default class AppsterController {
       AppsterHTML.CLICK,
       this[AppsterCallback.APPSTER_PROCESS_CANCEL_DELETE_WORK]
     );
+    //Event Handler for Enter Button in Part 1
+    this.registerEventHandler(
+      AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_ENTER_BUTTON,
+      AppsterHTML.CLICK,
+      this[AppsterCallback.APPSTER_PROCESS_ENTER_BUTTON]
+    );
+    //Event Handler for Cancel Button in Part 1
+    this.registerEventHandler(
+      AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_CANCEL_BUTTON,
+      AppsterHTML.CLICK,
+      this[AppsterCallback.APPSTER_PROCESS_CANCEL_Button]
+    );
+    this.registerEventHandler(
+      AppsterGUIId.APPSTER_YES_NO_MODAL_NO_BUTTON,
+      AppsterHTML.CLICK,
+      this[AppsterCallback.APPSTER_PROCESS_CANCEL_DELETE_WORK]
+    );
+    this.registerEventHandler(
+      AppsterGUIId.APPSTER_YES_NO_MODAL_YES_BUTTON,
+      AppsterHTML.CLICK,
+      this[AppsterCallback.APPSTER_PROCESS_CONFIRM_DELETE_WORK]
+    );
   }
 
   /**
@@ -116,6 +138,7 @@ export default class AppsterController {
 
     // MAKE A BRAND NEW LIST
     this.model.goList();
+    //console.log(this.model);
   };
 
   /**
@@ -142,10 +165,10 @@ export default class AppsterController {
    * button in the popup dialog after having requested to delete
    * the loaded work.
    */
-  processCancelDeleteWork() {
+  processCancelDeleteWork = () => {
     // JUST HIDE THE DIALOG
     this.model.view.hideDialog(); //Changed this part
-  }
+  };
 
   /**
    * This function responds to when the user changes the
@@ -165,7 +188,8 @@ export default class AppsterController {
    */
   processConfirmDeleteWork = () => {
     // DELETE THE WORK
-    this.model.removeWork(this.model.getWorkToEdit());
+    console.log(this.model.currentWork);
+    this.model.removeWork(this.model.currentWork);
 
     // GO BACK TO THE HOME SCREEN
     this.model.goHome();
@@ -179,5 +203,15 @@ export default class AppsterController {
   processDeleteWork = () => {
     // VERIFY VIA A DIALOG BOX
     this.model.view.showDialog();
+  };
+  /**
+   *
+   */
+  processCancelButton = () => {
+    this.model.view.hideCreateNewWorkModal();
+  };
+
+  processEnterButton = () => {
+    this.model.view.hideCreateNewWorkModal(); //Hides text input dialog
   };
 }

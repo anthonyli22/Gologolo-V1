@@ -600,6 +600,7 @@ export default class AppsterView {
   hideDialog() {
     let dialog = document.getElementById(AppsterGUIId.APPSTER_YES_NO_MODAL);
     dialog.classList.remove(AppsterGUIClass.IS_VISIBLE);
+    console.log("hideDialog");
   }
 
   /**

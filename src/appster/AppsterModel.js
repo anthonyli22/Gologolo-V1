@@ -132,4 +132,6 @@ export default class AppsterModel {
     //   }
     // }
   }
+
+  getWorkToEdit() {}
 }
