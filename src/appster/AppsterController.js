@@ -210,8 +210,22 @@ export default class AppsterController {
   processCancelButton = () => {
     this.model.view.hideCreateNewWorkModal();
   };
-
+  // when user hits enter button in create new work modal
   processEnterButton = () => {
+    var a = document.getElementById(
+      AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD
+    ).value;
+    // check if len of text is less than 1
+    if (a.length < 1) {
+      alert(" Less than 1 length");
+    }
+    // for(let i = 0; i < this.model.recentWork.length; i++){
+
+    // }
+    //Clears textfield
+    document.getElementById(
+      AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD
+    ).value = "";
     this.model.view.hideCreateNewWorkModal(); //Hides text input dialog
   };
 }
