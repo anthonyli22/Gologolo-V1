@@ -188,10 +188,11 @@ export default class AppsterController {
    */
   processConfirmDeleteWork = () => {
     // DELETE THE WORK
-    console.log(this.model.currentWork);
-    this.model.removeWork(this.model.currentWork);
+    //console.log(this.model.currentWork); currentWork is null
+    //this.model.removeWork(this.model.currentWork);
 
     // GO BACK TO THE HOME SCREEN
+    this.model.view.hideDialog();
     this.model.goHome();
   };
 
@@ -219,9 +220,12 @@ export default class AppsterController {
     if (a.length < 1) {
       alert(" Less than 1 length");
     }
-    // for(let i = 0; i < this.model.recentWork.length; i++){
-
-    // }
+    for (let i = 0; i < this.model.recentWork.length; i++) {
+      let name = this.model.recentWork[i];
+      if (a === name.getName()) {
+        alert(" This logo name already exists");
+      }
+    }
     //Clears textfield
     document.getElementById(
       AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD
