@@ -11,10 +11,10 @@ export default class GoLogoLoController extends AppsterController {
     this.model.updateText();
   }
 
-  registerAppsterEventHandlers() {
-    super();
-    this.registerEventHandler();
-  }
+  // registerAppsterEventHandlers() {
+  //   super();
+  //   this.registerEventHandler();
+  // }
 
   processEnterButton = () => {
     var a = document.getElementById(
