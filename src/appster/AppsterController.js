@@ -83,6 +83,11 @@ export default class AppsterController {
       AppsterHTML.CLICK,
       this[AppsterCallback.APPSTER_PROCESS_CONFIRM_DELETE_WORK]
     );
+    this.registerEventHandler(
+      AppsterGUIId.APPSTER_CONFIRM_MODAL_OK_BUTTON,
+      AppsterHTML.CLICK,
+      this[AppsterCallback.APPSTER_PROCESS_OK_BUTTON]
+    );
   }
 
   /**
@@ -218,12 +223,12 @@ export default class AppsterController {
     ).value;
     // check if len of text is less than 1
     if (a.length < 1) {
-      alert(" Less than 1 length");
+      //this.model.view.lessThanOneModal();
     }
     for (let i = 0; i < this.model.recentWork.length; i++) {
       let name = this.model.recentWork[i];
       if (a === name.getName()) {
-        alert(" This logo name already exists");
+        this.model.view.illegalNameModal();
       }
     }
     //Clears textfield
@@ -231,5 +236,9 @@ export default class AppsterController {
       AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD
     ).value = "";
     this.model.view.hideCreateNewWorkModal(); //Hides text input dialog
+  };
+
+  processOkButton = () => {
+    this.model.view.closeIllegalNameModal();
   };
 }

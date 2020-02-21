@@ -613,12 +613,22 @@ export default class AppsterView {
 
   showCreateNewWorkModal() {
     let dialog = document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL);
-    console.log("here");
     dialog.classList.add(AppsterGUIClass.IS_VISIBLE);
   }
 
   hideCreateNewWorkModal() {
     let dialog = document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL);
+    dialog.classList.remove(AppsterGUIClass.IS_VISIBLE);
+  }
+
+  illegalNameModal() {
+    let dialog = document.getElementById(AppsterGUIId.APPSTER_CONFIRM_MODAL);
+    dialog.classList.add(AppsterGUIClass.IS_VISIBLE);
+  }
+
+  closeIllegalNameModal() {
+    let dialog = document.getElementById(AppsterGUIId.APPSTER_CONFIRM_MODAL);
+    //console.log("here");
     dialog.classList.remove(AppsterGUIClass.IS_VISIBLE);
   }
 }

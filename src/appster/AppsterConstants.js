@@ -27,7 +27,8 @@ export const AppsterCallback = {
   APPSTER_PROCESS_CONFIRM_DELETE_WORK: "processConfirmDeleteWork",
   APPSTER_PROCESS_CANCEL_DELETE_WORK: "processCancelDeleteWork",
   APPSTER_PROCESS_CANCEL_Button: "processCancelButton", //I created this
-  APPSTER_PROCESS_ENTER_BUTTON: "processEnterButton" //I CREATED THIS
+  APPSTER_PROCESS_ENTER_BUTTON: "processEnterButton", //I CREATED THIS
+  APPSTER_PROCESS_OK_BUTTON: "processOkButton" // ^
 };
 
 /**
