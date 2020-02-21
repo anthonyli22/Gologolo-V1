@@ -223,12 +223,12 @@ export default class AppsterController {
     ).value;
     // check if len of text is less than 1
     if (a.length < 1) {
-      //this.model.view.lessThanOneModal();
+      this.model.view.showIllegalNameModal();
     }
     for (let i = 0; i < this.model.recentWork.length; i++) {
       let name = this.model.recentWork[i];
       if (a === name.getName()) {
-        this.model.view.illegalNameModal();
+        this.model.view.showConfirmNameModal();
       }
     }
     //Clears textfield
@@ -239,6 +239,6 @@ export default class AppsterController {
   };
 
   processOkButton = () => {
-    this.model.view.closeIllegalNameModal();
+    this.model.view.closeConfirmNameModal();
   };
 }

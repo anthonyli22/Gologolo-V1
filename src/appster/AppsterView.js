@@ -84,12 +84,16 @@ export default class AppsterView {
       let appsterYesNoModal = this.buildAppsterYesNoModal();
       let appsterConfirmModal = this.buildAppsterConfirmModal();
       let appsterTextInputModal = this.buildAppsterTextInputModal();
+
+      let appsterIllegalNameModal = this.buildAppsterIllegalNameModal(); //custom change
+
       appsterRootDiv.appendChild(appsterHomeScreenDiv);
       appsterRootDiv.appendChild(appsterEditScreenDiv);
       appsterRootDiv.appendChild(appsterYesNoModal);
       appsterRootDiv.appendChild(appsterConfirmModal);
       appsterRootDiv.appendChild(appsterTextInputModal);
 
+      appsterRootDiv.appendChild(appsterIllegalNameModal);
       // HIDE THE THINGS THAT ARE NOT VISIBLE
       this.showElementWithId(AppsterGUIId.APPSTER_EDIT_SCREEN, false);
     }
@@ -425,6 +429,64 @@ export default class AppsterView {
     textModal.appendChild(textFrame);
     return textModal;
   }
+  /**
+   * My custom modal to handle illegal name input for Part 1
+   */
+  buildAppsterIllegalNameModal() {
+    let illegalModal = this.buildElement(
+      AppsterHTML.DIV,
+      AppsterGUIId.APPSTER_ILLEGAL_NAME_MODAL,
+      [AppsterGUIClass.APPSTER_MODAL],
+      [],
+      null,
+      AppsterGUIClass.MODAL_ANIMATION_LEFT
+    );
+    let illegalFrame = this.buildElement(
+      AppsterHTML.DIV,
+      AppsterGUIId.APPSTER_ILLEGAL_NAME_MODAL_FRAME,
+      [AppsterGUIClass.APPSTER_MODAL_FRAME]
+    );
+    let header = this.buildElement(
+      AppsterHTML.HEADER,
+      AppsterGUIId.APPSTER_ILLEGAL_NAME_MODAL_HEADER,
+      [AppsterGUIClass.APPSTER_MODAL_HEADER]
+    );
+    let section = this.buildElement(
+      AppsterHTML.SECTION,
+      AppsterGUIId.APPSTER_ILLEGAL_NAME_MODAL_SECTION,
+      [AppsterGUIClass.APPSTER_MODAL_SECTION]
+    );
+    let p = this.buildElement(AppsterHTML.P);
+    let strong = this.buildElement(
+      AppsterHTML.STRONG,
+      "",
+      [],
+      [],
+      AppsterText.APPSTER_ILLEGAL_NAME_MODAL_PROMPT_TEXT
+    );
+    let okButton = this.buildElement(
+      AppsterHTML.BUTTON,
+      AppsterGUIId.APPSTER_ILLEGAL_NAME_MODAL_OK_BUTTON,
+      [AppsterGUIClass.APPSTER_MODAL_BUTTON],
+      [],
+      AppsterText.APPSTER_ILLEGAL_NAME_MODAL_OK_BUTTON_TEXT
+    );
+    let footer = this.buildElement(
+      AppsterHTML.FOOTER,
+      "",
+      [AppsterGUIClass.APPSTER_MODAL_FOOTER],
+      [],
+      AppsterText.APPSTER_ILLEGAL_NAME_MODAL_FOOTER_TEXT
+    );
+    p.appendChild(strong);
+    section.appendChild(p);
+    illegalFrame.appendChild(header);
+    illegalFrame.appendChild(section);
+    section.appendChild(okButton);
+    illegalFrame.appendChild(footer);
+    illegalModal.appendChild(illegalFrame);
+    return illegalModal;
+  }
 
   /**
    * This method is for building and returning a link on the home page
@@ -621,14 +683,28 @@ export default class AppsterView {
     dialog.classList.remove(AppsterGUIClass.IS_VISIBLE);
   }
 
-  illegalNameModal() {
+  showConfirmNameModal() {
     let dialog = document.getElementById(AppsterGUIId.APPSTER_CONFIRM_MODAL);
     dialog.classList.add(AppsterGUIClass.IS_VISIBLE);
   }
 
-  closeIllegalNameModal() {
+  closeConfirmNameModal() {
     let dialog = document.getElementById(AppsterGUIId.APPSTER_CONFIRM_MODAL);
     //console.log("here");
+    dialog.classList.remove(AppsterGUIClass.IS_VISIBLE);
+  }
+
+  showIllegalNameModal() {
+    let dialog = document.getElementById(
+      AppsterGUIId.APPSTER_ILLEGAL_NAME_MODAL
+    );
+    dialog.classList.add(AppsterGUIClass.IS_VISIBLE);
+  }
+
+  hideIllegalNameModal() {
+    let dialog = document.getElementById(
+      AppsterGUIId.APPSTER_ILLEGAL_NAME_MODAL
+    );
     dialog.classList.remove(AppsterGUIClass.IS_VISIBLE);
   }
 }

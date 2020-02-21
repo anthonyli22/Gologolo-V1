@@ -106,7 +106,14 @@ export const AppsterGUIId = {
     "appster_text_input_modal_enter_button",
   APPSTER_TEXT_INPUT_MODAL_CANCEL_BUTTON:
     "appster_text_input_modal_cancel_button",
-  APPSTER_TEXT_INPUT_MODAL_FOOTER: "appster_text_input_modal_footer"
+  APPSTER_TEXT_INPUT_MODAL_FOOTER: "appster_text_input_modal_footer",
+
+  APPSTER_ILLEGAL_NAME_MODAL: "appster_illegal_name_modal",
+  APPSTER_ILLEGAL_NAME_MODAL_FRAME: "appster_illegal_name_modal_frame",
+  APPSTER_ILLEGAL_NAME_MODAL_HEADER: "appster_illegal_name_modal_header",
+  APPSTER_ILLEGAL_NAME_MODAL_SECTION: "appster_illegal_name_modal_section",
+  APPSTER_ILLEGAL_NAME_MODAL_OK_BUTTON: "appster_illegal_name_modal_ok_button",
+  APPSTER_ILLEGAL_NAME_MODAL_FOOTER: "appster_illegal_name_frame"
 };
 
 /**
@@ -180,5 +187,12 @@ export const AppsterText = {
     "appster_text_input_modal_cancel_button_text",
   APPSTER_TEXT_INPUT_MODAL_FOOTER_TEXT: "appster_text_input_modal_footer_text",
 
-  APPSTER_MODAL_ANIMATION_TEXT: "appster_slideInOutLeft"
+  APPSTER_MODAL_ANIMATION_TEXT: "appster_slideInOutLeft",
+
+  APPSTER_ILLEGAL_NAME_MODAL_PROMPT_TEXT:
+    "appster_illegal_name_modal_prompt_text",
+  APPSTER_ILLEGAL_NAME_MODAL_OK_BUTTON_TEXT:
+    "appster_illegal_name_modal_ok_button_text",
+  APPSTER_ILLEGAL_NAME_MODAL_FOOTER_TEXT:
+    "appster_illegal_name_modal_footer_text"
 };
