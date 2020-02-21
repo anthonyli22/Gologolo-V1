@@ -240,4 +240,70 @@ export default class GoLogoLoView extends AppsterView {
     let textList = document.getElementById(listItemId);
     textList.innerHTML += textList.innerHTML + letterToAppend;
   }
+
+  setupHandlers() {}
+
+  buildEditTextModal() {
+    let buildTextModal = this.buildElement(
+      AppsterHTML.DIV,
+      AppsterGUIId.APPSTER_YES_NO_MODAL,
+      [AppsterGUIClass.APPSTER_MODAL],
+      [],
+      null,
+      AppsterGUIClass.MODAL_ANIMATION_LEFT
+    );
+    let yesNoFrame = this.buildElement(
+      AppsterHTML.DIV,
+      AppsterGUIId.APPSTER_YES_NO_MODAL_FRAME,
+      [AppsterGUIClass.APPSTER_MODAL_FRAME]
+    );
+    let header = this.buildElement(
+      AppsterHTML.HEADER,
+      AppsterGUIId.APPSTER_YES_NO_MODAL_HEADER,
+      [AppsterGUIClass.APPSTER_MODAL_HEADER]
+    );
+    let section = this.buildElement(
+      AppsterHTML.SECTION,
+      AppsterGUIId.APPSTER_YES_NO_MODAL_SECTION,
+      [AppsterGUIClass.APPSTER_MODAL_SECTION]
+    );
+    let p = this.buildElement(AppsterHTML.P);
+    let strong = this.buildElement(
+      AppsterHTML.STRONG,
+      "",
+      [],
+      [],
+      AppsterText.APPSTER_YES_NO_MODAL_PROMPT_TEXT
+    );
+    let yesButton = this.buildElement(
+      AppsterHTML.BUTTON,
+      AppsterGUIId.APPSTER_YES_NO_MODAL_YES_BUTTON,
+      [AppsterGUIClass.APPSTER_MODAL_BUTTON],
+      [],
+      AppsterText.APPSTER_YES_NO_MODAL_YES_BUTTON_TEXT
+    );
+    let noButton = this.buildElement(
+      AppsterHTML.BUTTON,
+      AppsterGUIId.APPSTER_YES_NO_MODAL_NO_BUTTON,
+      [AppsterGUIClass.APPSTER_MODAL_BUTTON],
+      [],
+      AppsterText.APPSTER_YES_NO_MODAL_NO_BUTTON_TEXT
+    );
+    let footer = this.buildElement(
+      AppsterHTML.FOOTER,
+      "",
+      [AppsterGUIClass.APPSTER_MODAL_FOOTER],
+      [],
+      AppsterText.APPSTER_YES_NO_MODAL_FOOTER_TEXT
+    );
+    p.appendChild(strong);
+    section.appendChild(p);
+    yesNoFrame.appendChild(header);
+    yesNoFrame.appendChild(section);
+    section.appendChild(yesButton);
+    section.appendChild(noButton);
+    yesNoFrame.appendChild(footer);
+    yesNoModal.appendChild(yesNoFrame);
+    return yesNoModal;
+  }
 }

@@ -11,6 +11,11 @@ export default class GoLogoLoController extends AppsterController {
     this.model.updateText();
   }
 
+  registerAppsterEventHandlers() {
+    super();
+    this.registerEventHandler();
+  }
+
   processEnterButton = () => {
     var a = document.getElementById(
       AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD
