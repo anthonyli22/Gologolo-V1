@@ -18,15 +18,20 @@ export default class GoLogoLoController extends AppsterController {
     // check if len of text is less than 1
     if (a.length < 1) {
       this.model.view.showIllegalNameModal();
-    }
-    for (let i = 0; i < this.model.recentWork.length; i++) {
-      let name = this.model.recentWork[i];
-      if (a === name.getName()) {
-        this.model.view.showConfirmNameModal();
+    } else {
+      var bool = false;
+      for (let i = 0; i < this.model.recentWork.length; i++) {
+        let name = this.model.recentWork[i];
+        if (a === name.getName()) {
+          this.model.view.showConfirmNameModal();
+          bool = true;
+        }
+      }
+      if (!bool) {
+        var b = new GoLogoLoLogo(a);
+        this.model.prependWork(b);
       }
     }
-    var b = new GoLogoLoLogo(a);
-    this.model.prependWork(b);
     //Clears textfield
     document.getElementById(
       AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD
