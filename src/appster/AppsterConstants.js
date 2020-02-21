@@ -28,7 +28,8 @@ export const AppsterCallback = {
   APPSTER_PROCESS_CANCEL_DELETE_WORK: "processCancelDeleteWork",
   APPSTER_PROCESS_CANCEL_Button: "processCancelButton", //I created this
   APPSTER_PROCESS_ENTER_BUTTON: "processEnterButton", //I CREATED THIS
-  APPSTER_PROCESS_OK_BUTTON: "processOkButton" // ^
+  APPSTER_PROCESS_OK_BUTTON: "processOkButton", // ^
+  APPSTER_PROCESS_ILLEGAL_OK_BUTTON: "processIllegalOkButton"
 };
 
 /**
@@ -113,7 +114,7 @@ export const AppsterGUIId = {
   APPSTER_ILLEGAL_NAME_MODAL_HEADER: "appster_illegal_name_modal_header",
   APPSTER_ILLEGAL_NAME_MODAL_SECTION: "appster_illegal_name_modal_section",
   APPSTER_ILLEGAL_NAME_MODAL_OK_BUTTON: "appster_illegal_name_modal_ok_button",
-  APPSTER_ILLEGAL_NAME_MODAL_FOOTER: "appster_illegal_name_frame"
+  APPSTER_ILLEGAL_NAME_MODAL_FOOTER: "appster_illegal_name_modal_footer"
 };
 
 /**

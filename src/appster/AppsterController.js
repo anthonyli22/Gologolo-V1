@@ -51,16 +51,16 @@ export default class AppsterController {
     );
 
     // AND THE MODAL BUTTONS
-    this.registerEventHandler(
-      AppsterGUIId.DIALOG_YES_BUTTON,
-      AppsterHTML.CLICK,
-      this[AppsterCallback.APPSTER_PROCESS_CONFIRM_DELETE_WORK]
-    );
-    this.registerEventHandler(
-      AppsterGUIId.DIALOG_NO_BUTTON,
-      AppsterHTML.CLICK,
-      this[AppsterCallback.APPSTER_PROCESS_CANCEL_DELETE_WORK]
-    );
+    // this.registerEventHandler(
+    //   AppsterGUIId.DIALOG_YES_BUTTON,
+    //   AppsterHTML.CLICK,
+    //   this[AppsterCallback.APPSTER_PROCESS_CONFIRM_DELETE_WORK]
+    // );
+    // this.registerEventHandler(
+    //   AppsterGUIId.DIALOG_NO_BUTTON,
+    //   AppsterHTML.CLICK,
+    //   this[AppsterCallback.APPSTER_PROCESS_CANCEL_DELETE_WORK]
+    // );
     //Event Handler for Enter Button in Part 1
     this.registerEventHandler(
       AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_ENTER_BUTTON,
@@ -87,6 +87,11 @@ export default class AppsterController {
       AppsterGUIId.APPSTER_CONFIRM_MODAL_OK_BUTTON,
       AppsterHTML.CLICK,
       this[AppsterCallback.APPSTER_PROCESS_OK_BUTTON]
+    );
+    this.registerEventHandler(
+      AppsterGUIId.APPSTER_ILLEGAL_NAME_MODAL_OK_BUTTON,
+      AppsterHTML.CLICK,
+      this[AppsterCallback.APPSTER_PROCESS_ILLEGAL_OK_BUTTON]
     );
   }
 
@@ -194,7 +199,7 @@ export default class AppsterController {
   processConfirmDeleteWork = () => {
     // DELETE THE WORK
     //console.log(this.model.currentWork); currentWork is null
-    //this.model.removeWork(this.model.currentWork);
+    this.model.removeWork();
 
     // GO BACK TO THE HOME SCREEN
     this.model.view.hideDialog();
@@ -217,28 +222,12 @@ export default class AppsterController {
     this.model.view.hideCreateNewWorkModal();
   };
   // when user hits enter button in create new work modal
-  processEnterButton = () => {
-    var a = document.getElementById(
-      AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD
-    ).value;
-    // check if len of text is less than 1
-    if (a.length < 1) {
-      this.model.view.showIllegalNameModal();
-    }
-    for (let i = 0; i < this.model.recentWork.length; i++) {
-      let name = this.model.recentWork[i];
-      if (a === name.getName()) {
-        this.model.view.showConfirmNameModal();
-      }
-    }
-    //Clears textfield
-    document.getElementById(
-      AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD
-    ).value = "";
-    this.model.view.hideCreateNewWorkModal(); //Hides text input dialog
-  };
 
   processOkButton = () => {
     this.model.view.closeConfirmNameModal();
+  };
+
+  processIllegalOkButton = () => {
+    this.model.view.hideIllegalNameModal();
   };
 }

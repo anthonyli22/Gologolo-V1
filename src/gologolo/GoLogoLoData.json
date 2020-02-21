@@ -29,6 +29,12 @@
     { "appster_text_input_modal_cancel_button_text": "Cancel" },
     { "appster_text_input_modal_footer_text": "Creating New Logo" },
 
+    { "appster_illegal_name_modal_footer": " Illegal" },
+    { "appster_illegal_name_modal_header": "Illegal Name" },
+    { "appster_illegal_name_modal_ok_button_text": " Ok" },
+    { "appster_illegal_name_modal_footer_text": " TRY AGAIN!" },
+    { "appster_illegal_name_modal_prompt_text": "Illegal String Good Sir" },
+
     { "gologolo_edit_text_text": "Edit Text &#x270e;" },
     { "gologolo_font_size_text": "Font Size: " },
     { "gologolo_text_color_text": "Text Color: " },
