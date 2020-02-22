@@ -35,6 +35,11 @@
     { "appster_illegal_name_modal_footer_text": " TRY AGAIN!" },
     { "appster_illegal_name_modal_prompt_text": "Illegal String Good Sir" },
 
+    { "gologolo_edit_text_modal_prompt_text": "Enter new name for logo" },
+    { "gologolo_edit_text_modal_enter_button_text": "Enter" },
+    { "gologolo_edit_text_modal_cancel_button_text": "Cancel" },
+    { "gologolo_edit_text_modal_footer_text": " :0 " },
+
     { "gologolo_edit_text_text": "Edit Text &#x270e;" },
     { "gologolo_font_size_text": "Font Size: " },
     { "gologolo_text_color_text": "Text Color: " },

@@ -3,7 +3,12 @@ import {
   GoLogoLoGUIId,
   GoLogoLoText
 } from "./GoLogoLoConstants.js";
-import { AppsterHTML, AppsterSymbols } from "../appster/AppsterConstants.js";
+import {
+  AppsterHTML,
+  AppsterSymbols,
+  AppsterGUIId,
+  AppsterGUIClass
+} from "../appster/AppsterConstants.js";
 import AppsterView from "../appster/AppsterView.js";
 
 export default class GoLogoLoView extends AppsterView {
@@ -11,6 +16,41 @@ export default class GoLogoLoView extends AppsterView {
     super();
   }
 
+  loadRoot(appData) {
+    let appsterRootDiv = document.getElementById(AppsterGUIId.APPSTER_ROOT_DIV);
+    if (!appsterRootDiv) {
+      // AN ERROR HAS OCCURED, PROVIDE FEEDBACK
+      let errorMessage = this.getAppText(
+        AppsterText.MISSING_ROOT_DIV_ERROR_TEXT
+      );
+      console.error(errorMessage);
+      appsterRootDiv.innerHTML = errorMessage;
+    } else {
+      // LOAD TEXT FROM THE JSON FILE INTO THE APPROPRIATE UI CONTROLS
+      this.loadAppsterText(appData);
+
+      // LOAD THE APPSTER UI
+      let appsterHomeScreenDiv = this.buildAppsterHomeScreenDiv();
+      let appsterEditScreenDiv = this.buildAppsterEditScreenDiv();
+      let appsterYesNoModal = this.buildAppsterYesNoModal();
+      let appsterConfirmModal = this.buildAppsterConfirmModal();
+      let appsterTextInputModal = this.buildAppsterTextInputModal();
+
+      let appsterIllegalNameModal = this.buildAppsterIllegalNameModal(); //custom change
+      let gologoEditTextModal = this.buildEditTextModal(); // ^
+
+      appsterRootDiv.appendChild(appsterHomeScreenDiv);
+      appsterRootDiv.appendChild(appsterEditScreenDiv);
+      appsterRootDiv.appendChild(appsterYesNoModal);
+      appsterRootDiv.appendChild(appsterConfirmModal);
+      appsterRootDiv.appendChild(appsterTextInputModal);
+
+      appsterRootDiv.appendChild(appsterIllegalNameModal);
+      appsterRootDiv.appendChild(gologoEditTextModal);
+      // HIDE THE THINGS THAT ARE NOT VISIBLE
+      this.showElementWithId(AppsterGUIId.APPSTER_EDIT_SCREEN, false);
+    }
+  }
   fillAppWorkspace(workspace) {
     let colorPickerAttributes = [];
     colorPickerAttributes[AppsterHTML.TYPE] = AppsterHTML.COLOR;
@@ -248,27 +288,27 @@ export default class GoLogoLoView extends AppsterView {
   setupHandlers() {}
 
   buildEditTextModal() {
-    let buildTextModal = this.buildElement(
+    let editTextModal = this.buildElement(
       AppsterHTML.DIV,
       GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL,
-      [GoLogoLoGUIClass.APPSTER_MODAL],
+      [AppsterGUIClass.APPSTER_MODAL],
       [],
       null,
       AppsterGUIClass.MODAL_ANIMATION_LEFT
     );
-    let yesNoFrame = this.buildElement(
+    let editTextFrame = this.buildElement(
       AppsterHTML.DIV,
-      AppsterGUIId.APPSTER_YES_NO_MODAL_FRAME,
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL_FRAME,
       [AppsterGUIClass.APPSTER_MODAL_FRAME]
     );
     let header = this.buildElement(
       AppsterHTML.HEADER,
-      AppsterGUIId.APPSTER_YES_NO_MODAL_HEADER,
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL_HEADER,
       [AppsterGUIClass.APPSTER_MODAL_HEADER]
     );
     let section = this.buildElement(
       AppsterHTML.SECTION,
-      AppsterGUIId.APPSTER_YES_NO_MODAL_SECTION,
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL_SECTION,
       [AppsterGUIClass.APPSTER_MODAL_SECTION]
     );
     let p = this.buildElement(AppsterHTML.P);
@@ -277,37 +317,65 @@ export default class GoLogoLoView extends AppsterView {
       "",
       [],
       [],
-      AppsterText.APPSTER_YES_NO_MODAL_PROMPT_TEXT
+      GoLogoLoText.GOLOGOLO_EDIT_TEXT_MODAL_PROMPT_TEXT
     );
-    let yesButton = this.buildElement(
+    let textFieldAttributes = [];
+    textFieldAttributes[AppsterHTML.TYPE] = AppsterHTML.TEXT;
+    let textField = this.buildElement(
+      AppsterHTML.INPUT,
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL_TEXTFIELD,
+      [AppsterGUIClass.APPSTER_MODAL_TEXTFIELD],
+      textFieldAttributes
+    );
+    let enterButton = this.buildElement(
       AppsterHTML.BUTTON,
-      AppsterGUIId.APPSTER_YES_NO_MODAL_YES_BUTTON,
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL_ENTER_BUTTON,
       [AppsterGUIClass.APPSTER_MODAL_BUTTON],
       [],
-      AppsterText.APPSTER_YES_NO_MODAL_YES_BUTTON_TEXT
+      GoLogoLoText.GOLOGOLO_EDIT_TEXT_MODAL_ENTER_BUTTON_TEXT
     );
-    let noButton = this.buildElement(
+    let cancelButton = this.buildElement(
       AppsterHTML.BUTTON,
-      AppsterGUIId.APPSTER_YES_NO_MODAL_NO_BUTTON,
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL_CANCEL_BUTTON,
       [AppsterGUIClass.APPSTER_MODAL_BUTTON],
       [],
-      AppsterText.APPSTER_YES_NO_MODAL_NO_BUTTON_TEXT
+      GoLogoLoText.GOLOGOLO_EDIT_TEXT_MODAL_CANCEL_BUTTON_TEXT
     );
     let footer = this.buildElement(
       AppsterHTML.FOOTER,
       "",
       [AppsterGUIClass.APPSTER_MODAL_FOOTER],
       [],
-      AppsterText.APPSTER_YES_NO_MODAL_FOOTER_TEXT
+      GoLogoLoText.GOLOGOLO_EDIT_TEXT_MODAL_FOOTER_TEXT
     );
     p.appendChild(strong);
     section.appendChild(p);
-    yesNoFrame.appendChild(header);
-    yesNoFrame.appendChild(section);
-    section.appendChild(yesButton);
-    section.appendChild(noButton);
-    yesNoFrame.appendChild(footer);
-    yesNoModal.appendChild(yesNoFrame);
-    return yesNoModal;
+    editTextFrame.appendChild(header);
+    editTextFrame.appendChild(section);
+    section.appendChild(textField);
+    section.appendChild(enterButton);
+    section.appendChild(cancelButton);
+    editTextFrame.appendChild(footer);
+    editTextModal.appendChild(editTextFrame);
+    return editTextModal;
+  }
+
+  updateText(work) {
+    let textDiv = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+    textDiv.style.text = work.getText();
+  }
+
+  showEditTextModal() {
+    let dialog = document.getElementById(
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL
+    );
+    dialog.classList.add(AppsterGUIClass.IS_VISIBLE);
+  }
+
+  hideEditTextModal() {
+    let dialog = document.getElementById(
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL
+    );
+    dialog.classList.remove(AppsterGUIClass.IS_VISIBLE);
   }
 }

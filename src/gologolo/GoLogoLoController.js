@@ -8,13 +8,9 @@ export default class GoLogoLoController extends AppsterController {
     super();
   }
 
-  processEditText() {
-    console.log("processEditText");
-    this.model.updateText();
-  }
-
   registerAppsterEventHandlers() {
     super.registerAppsterEventHandlers();
+    //Edit Screen Handlers
     this.registerEventHandler(
       GoLogoLoGUIId.GOLOGOLO_TEXT_COLOR_PICKER,
       AppsterHTML.CHANGE,
@@ -54,6 +50,22 @@ export default class GoLogoLoController extends AppsterController {
       GoLogoLoGUIId.GOLOGOLO_PADDING_SLIDER,
       AppsterHTML.CHANGE,
       this[GoLogoLoCallback.GOLOGOLO_PROCESS_PADDING_SLIDER]
+    );
+    //Edit Text Modal Event Handlers
+    this.registerEventHandler(
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_BUTTON,
+      AppsterHTML.CLICK,
+      this[GoLogoLoCallback.GOLOGOLO_PROCESS_EDIT_TEXT_PRESS]
+    );
+    this.registerEventHandler(
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL_ENTER_BUTTON,
+      AppsterHTML.CLICK,
+      this[GoLogoLoCallback.GOLOGOLO_PROCESS_EDIT_TEXT]
+    );
+    this.registerEventHandler(
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL_CANCEL_BUTTON,
+      AppsterHTML.CLICK,
+      this[GoLogoLoCallback.GOLOGOLO_PROCESS_EDIT_TEXT_CANCEL]
     );
   }
 
@@ -110,7 +122,7 @@ export default class GoLogoLoController extends AppsterController {
    * Might need work!
    */
   processBorderColor = () => {
-    console.log("change border color!!!");
+    //console.log("change border color!!!");
     var a = document.getElementById(GoLogoLoGUIId.GOLOGOLO_BORDER_COLOR_PICKER);
     console.log(a.value);
     //console.log(this.model);
@@ -155,5 +167,34 @@ export default class GoLogoLoController extends AppsterController {
     var a = document.getElementById(GoLogoLoGUIId.GOLOGOLO_MARGIN_SLIDER);
     this.model.recentWork[0].setMargin(a.value);
     this.model.view.loadWorkStyle(this.model.recentWork[0]);
+  };
+  // WHEN USER CLICKS EDIT TEXT (PENCIL) BUTTON
+  processEditTextPress = () => {
+    this.model.view.showEditTextModal();
+  };
+
+  processEditText = () => {
+    var a = document.getElementById(
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL_TEXTFIELD
+    ).value;
+    // check if len of text is less than 1
+    if (a.length < 1) {
+      this.model.view.showIllegalNameModal();
+    } else {
+      this.model.recentWork[0].setText(a);
+      console.log("processEditText");
+      let currText = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+      currText.innerHTML = a;
+      //this.model.updateText(this.model.recentWork[0]);
+    }
+    //Clears textfield
+    document.getElementById(
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL_TEXTFIELD
+    ).value = "";
+    this.model.view.hideEditTextModal();
+  };
+
+  processEditTextCancel = () => {
+    this.model.view.hideEditTextModal();
   };
 }
