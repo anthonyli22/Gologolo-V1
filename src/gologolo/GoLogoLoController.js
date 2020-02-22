@@ -21,11 +21,6 @@ export default class GoLogoLoController extends AppsterController {
       this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_TEXT_COLOR]
     );
     this.registerEventHandler(
-      GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER,
-      AppsterHTML.ONINPUT,
-      this[GoLogoLoCallback.GOLOGOLO_PROCESS_RADIUS_SLIDER]
-    );
-    this.registerEventHandler(
       GoLogoLoGUIId.GOLOGOLO_BACKGROUND_COLOR_PICKER,
       AppsterHTML.CHANGE,
       this[GoLogoLoCallback.GOLOGOLO_PROCESS_BACKGROUND_COLOR]
@@ -34,6 +29,31 @@ export default class GoLogoLoController extends AppsterController {
       GoLogoLoGUIId.GOLOGOLO_BORDER_COLOR_PICKER,
       AppsterHTML.CHANGE,
       this[GoLogoLoCallback.GOLOGOLO_PROCESS_BORDER_COLOR]
+    );
+    this.registerEventHandler(
+      GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER,
+      AppsterHTML.CHANGE,
+      this[GoLogoLoCallback.GOLOGOLO_PROCESS_RADIUS_SLIDER]
+    );
+    this.registerEventHandler(
+      GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER,
+      AppsterHTML.CHANGE,
+      this[GoLogoLoCallback.GOLOGOLO_PROCESS_FONT_SIZE_SLIDER]
+    );
+    this.registerEventHandler(
+      GoLogoLoGUIId.GOLOGOLO_BORDER_THICKNESS_SLIDER,
+      AppsterHTML.CHANGE,
+      this[GoLogoLoCallback.GOLOGOLO_PROCESS_THICKNESS_SLIDER]
+    );
+    this.registerEventHandler(
+      GoLogoLoGUIId.GOLOGOLO_MARGIN_SLIDER,
+      AppsterHTML.CHANGE,
+      this[GoLogoLoCallback.GOLOGOLO_PROCESS_MARGIN_SLIDER]
+    );
+    this.registerEventHandler(
+      GoLogoLoGUIId.GOLOGOLO_PADDING_SLIDER,
+      AppsterHTML.CHANGE,
+      this[GoLogoLoCallback.GOLOGOLO_PROCESS_PADDING_SLIDER]
     );
   }
 
@@ -75,16 +95,6 @@ export default class GoLogoLoController extends AppsterController {
     this.model.view.loadWorkStyle(this.model.recentWork[0]);
   };
 
-  processRadiusSlider = () => {
-    console.log("processRadiusSlider");
-    console.log(a);
-    var a = document.getElementById(
-      GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER
-    );
-    this.model.recentWork[0].setBorderRadius(a.value);
-    this.model.view.loadWorkStyle(this.model.recentWork[0]);
-  };
-
   processBackgroundColor = () => {
     console.log("change background color");
     var a = document.getElementById(
@@ -102,9 +112,48 @@ export default class GoLogoLoController extends AppsterController {
   processBorderColor = () => {
     console.log("change border color!!!");
     var a = document.getElementById(GoLogoLoGUIId.GOLOGOLO_BORDER_COLOR_PICKER);
-    //console.log(a);
+    console.log(a.value);
     //console.log(this.model);
     this.model.recentWork[0].setBorderColor(a.value);
+    this.model.view.loadWorkStyle(this.model.recentWork[0]);
+  };
+
+  processRadiusSlider = () => {
+    console.log("processRadiusSlider");
+    var a = document.getElementById(
+      GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER
+    );
+    this.model.recentWork[0].setBorderRadius(a.value);
+    this.model.view.loadWorkStyle(this.model.recentWork[0]);
+  };
+
+  processFontSizeSlider = () => {
+    console.log("processFontSizeSlider");
+    var a = document.getElementById(GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER);
+    this.model.recentWork[0].setFontSize(a.value);
+    this.model.view.loadWorkStyle(this.model.recentWork[0]);
+  };
+
+  processThicknessSlider = () => {
+    console.log("processThicknessSlider");
+    var a = document.getElementById(
+      GoLogoLoGUIId.GOLOGOLO_BORDER_THICKNESS_SLIDER
+    );
+    this.model.recentWork[0].setBorderThickness(a.value);
+    this.model.view.loadWorkStyle(this.model.recentWork[0]);
+  };
+
+  processPaddingSlider = () => {
+    console.log("processPaddingSlider");
+    var a = document.getElementById(GoLogoLoGUIId.GOLOGOLO_PADDING_SLIDER);
+    this.model.recentWork[0].setPadding(a.value);
+    this.model.view.loadWorkStyle(this.model.recentWork[0]);
+  };
+
+  processMarginSlider = () => {
+    console.log("processMarginSlider");
+    var a = document.getElementById(GoLogoLoGUIId.GOLOGOLO_MARGIN_SLIDER);
+    this.model.recentWork[0].setMargin(a.value);
     this.model.view.loadWorkStyle(this.model.recentWork[0]);
   };
 }

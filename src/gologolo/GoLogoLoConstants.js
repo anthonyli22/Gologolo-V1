@@ -43,7 +43,11 @@ export const GoLogoLoText = {
 
 export const GoLogoLoCallback = {
   GOLOGOLO_PROCESS_CHANGE_TEXT_COLOR: "processChangeTextColor",
-  GOLOGOLO_PROCESS_RADIUS_SLIDER: "processRadiusSlider",
   GOLOGOLO_PROCESS_BACKGROUND_COLOR: "processBackgroundColor",
-  GOLOGOLO_PROCESS_BORDER_COLOR: "processBorderColor"
+  GOLOGOLO_PROCESS_BORDER_COLOR: "processBorderColor",
+  GOLOGOLO_PROCESS_THICKNESS_SLIDER: "processThicknessSlider",
+  GOLOGOLO_PROCESS_RADIUS_SLIDER: "processRadiusSlider",
+  GOLOGOLO_PROCESS_FONT_SIZE_SLIDER: "processFontSizeSlider",
+  GOLOGOLO_PROCESS_PADDING_SLIDER: "processPaddingSlider",
+  GOLOGOLO_PROCESS_MARGIN_SLIDER: "processMarginSlider"
 };
