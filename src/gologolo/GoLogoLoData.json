@@ -53,9 +53,9 @@
       "font_size": 30,
       "text_color": "#123456",
       "background_color": "#654321",
-      "border_color": "#abcdef",
+      "border_color": "#000000",
       "border_radius": 15,
-      "border_thickness": 2,
+      "border_thickness": 8,
       "padding": 20,
       "margin": 10
     },

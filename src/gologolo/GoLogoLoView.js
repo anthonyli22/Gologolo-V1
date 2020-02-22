@@ -62,7 +62,7 @@ export default class GoLogoLoView extends AppsterView {
     );
     let borderThicknessSlider = this.buildElement(
       AppsterHTML.INPUT,
-      GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER,
+      GoLogoLoGUIId.GOLOGOLO_BORDER_THICKNESS_SLIDER,
       [],
       rangeAttributes
     );
@@ -241,6 +241,7 @@ export default class GoLogoLoView extends AppsterView {
     textList.innerHTML += textList.innerHTML + letterToAppend;
   }
 
+  //NEW STUFF
   setupHandlers() {}
 
   buildEditTextModal() {
