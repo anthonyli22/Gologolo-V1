@@ -49,5 +49,6 @@ export const GoLogoLoCallback = {
   GOLOGOLO_PROCESS_RADIUS_SLIDER: "processRadiusSlider",
   GOLOGOLO_PROCESS_FONT_SIZE_SLIDER: "processFontSizeSlider",
   GOLOGOLO_PROCESS_PADDING_SLIDER: "processPaddingSlider",
-  GOLOGOLO_PROCESS_MARGIN_SLIDER: "processMarginSlider"
+  GOLOGOLO_PROCESS_MARGIN_SLIDER: "processMarginSlider",
+  GOLOGOLO_PROCESS_EDIT_TEXT: "processEditText"
 };

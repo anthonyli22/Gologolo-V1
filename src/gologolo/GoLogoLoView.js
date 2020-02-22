@@ -250,8 +250,8 @@ export default class GoLogoLoView extends AppsterView {
   buildEditTextModal() {
     let buildTextModal = this.buildElement(
       AppsterHTML.DIV,
-      AppsterGUIId.APPSTER_YES_NO_MODAL,
-      [AppsterGUIClass.APPSTER_MODAL],
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL,
+      [GoLogoLoGUIClass.APPSTER_MODAL],
       [],
       null,
       AppsterGUIClass.MODAL_ANIMATION_LEFT
