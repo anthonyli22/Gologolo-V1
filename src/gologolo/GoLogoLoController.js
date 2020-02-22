@@ -1,4 +1,8 @@
-import { AppsterGUIId, AppsterHTML } from "../appster/AppsterConstants.js";
+import {
+  AppsterGUIId,
+  AppsterHTML,
+  AppsterText
+} from "../appster/AppsterConstants.js";
 import AppsterController from "../appster/AppsterController.js";
 import GoLogoLoLogo from "../gologolo/GoLogoLoLogo.js";
 import { GoLogoLoGUIId, GoLogoLoCallback } from "./GoLogoLoConstants.js";
@@ -88,7 +92,10 @@ export default class GoLogoLoController extends AppsterController {
       if (!bool) {
         var b = new GoLogoLoLogo(a);
         this.model.prependWork(b);
-        this.model.view.goToEditScreen();
+        this.model.editWork(b.getName());
+        //b.setText = this[AppsterText.APPSTER_HOME_LOGO_TEXT];
+        let currText = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+        currText.innerHTML = AppsterText.APPSTER_HOME_LOGO_TEXT;
       }
     }
     //Clears textfield
