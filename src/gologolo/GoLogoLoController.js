@@ -149,6 +149,7 @@ export default class GoLogoLoController extends AppsterController {
   processFontSizeSlider = () => {
     console.log("processFontSizeSlider");
     var a = document.getElementById(GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER);
+    console.log(a.value);
     this.model.recentWork[0].setFontSize(a.value);
     this.model.view.loadWorkStyle(this.model.recentWork[0]);
   };
