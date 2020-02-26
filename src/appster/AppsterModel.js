@@ -26,12 +26,12 @@ export default class AppsterModel {
   editWork(workNameToEdit) {
     // GET THE WORK THAT WE PLAN TO EDIT
     let work = this.getRecentWork(workNameToEdit);
-    console.log(work);
+    //console.log(work);
     if (work) {
       // SET IT AS THE WORK WE ARE EDITING
       this.workToEdit = work;
       this.moveWorkToTop(this.workToEdit);
-      console.log("im in edit work");
+      //console.log("im in edit work");
       // LOAD DATA INTO THE UI
       this.view.loadWork(this.workToEdit);
 
@@ -124,14 +124,5 @@ export default class AppsterModel {
 
   goList() {
     this.view.showCreateNewWorkModal();
-
-    console.log(" sdssd");
-    // for (let i = 0; i < this.recentWork.length; i++) {
-    //   if (this.recentWork[i].getName === newWork) {
-    //     return false;
-    //   }
-    // }
   }
-
-  getWorkToEdit() {}
 }

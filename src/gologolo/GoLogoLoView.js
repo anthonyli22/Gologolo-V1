@@ -100,9 +100,9 @@ export default class GoLogoLoView extends AppsterView {
       [],
       rangeAttributes
     );
-    let borderThicknessSlider = this.buildElement(
+    let borderWidthSlider = this.buildElement(
       AppsterHTML.INPUT,
-      GoLogoLoGUIId.GOLOGOLO_BORDER_THICKNESS_SLIDER,
+      GoLogoLoGUIId.GOLOGOLO_BORDER_WIDTH_SLIDER,
       [],
       rangeAttributes
     );
@@ -186,10 +186,10 @@ export default class GoLogoLoView extends AppsterView {
         "",
         promptClass,
         [],
-        GoLogoLoText.GOLOGOLO_BORDER_THICKNESS_TEXT
+        GoLogoLoText.GOLOGOLO_BORDER_WIDTH_TEXT
       )
     );
-    toolbar.appendChild(borderThicknessSlider);
+    toolbar.appendChild(borderWidthSlider);
     toolbar.appendChild(this.buildElement(AppsterHTML.BR));
     toolbar.appendChild(
       this.buildElement(
@@ -241,10 +241,10 @@ export default class GoLogoLoView extends AppsterView {
       GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER
     );
     borderRadiusSlider.value = work.getBorderRadius();
-    let borderThicknessSlider = document.getElementById(
+    let borderWidthSlider = document.getElementById(
       GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER
     );
-    borderThicknessSlider.value = work.getBorderThickness();
+    borderWidthSlider.value = work.getBorderWidth();
     let paddingSlider = document.getElementById(
       GoLogoLoGUIId.GOLOGOLO_PADDING_SLIDER
     );
@@ -258,7 +258,7 @@ export default class GoLogoLoView extends AppsterView {
 
   loadWorkStyle(work) {
     let textDiv = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
-    console.log(work.getFontSize());
+    //console.log(work.getFontSize());
     if (work.getFontSize() == 0) {
       textDiv.style.fontSize = 1 + "px";
     } else {
@@ -268,7 +268,9 @@ export default class GoLogoLoView extends AppsterView {
     textDiv.style.backgroundColor = work.getBackgroundColor();
     textDiv.style.borderColor = work.getBorderColor();
     textDiv.style.borderRadius = work.getBorderRadius() + "px";
-    textDiv.style.borderWidth = work.getBorderThickness() + "px";
+    //textDiv.style.borderThickness =
+    textDiv.style.borderWidth = work.getBorderWidth();
+    //textDiv.style.border = "solid";
     textDiv.style.margin = work.getMargin() + "px";
     textDiv.style.padding = work.getPadding() + "px";
   }

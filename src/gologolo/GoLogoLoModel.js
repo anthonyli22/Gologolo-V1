@@ -41,9 +41,10 @@ export default class GoLogoLoModel extends AppsterModel {
         appWork.setFontSize(jsonWork.font_size);
         appWork.setTextColor(jsonWork.text_color);
         appWork.setBackgroundColor(jsonWork.background_color);
+        //appWork.setBorder(jsonWork.border);
         appWork.setBorderColor(jsonWork.border_color);
         appWork.setBorderRadius(jsonWork.border_radius);
-        appWork.setBorderThickness(jsonWork.border_thickness);
+        appWork.setBorderWidth(jsonWork.border_width);
         appWork.setPadding(jsonWork.padding);
         appWork.setMargin(jsonWork.margin);
       }

@@ -1,88 +1,101 @@
-import AppWork from '../appster/AppWork.js'
-import {GoLogoLoDefaults} from './GoLogoLoConstants.js'
+import AppWork from "../appster/AppWork.js";
+import { GoLogoLoDefaults } from "./GoLogoLoConstants.js";
 
 export default class GoLogoLoLogo extends AppWork {
-    constructor(name) {
-        super(name);
-        this.text = GoLogoLoDefaults.GOLOGOLO_DEFAULT_TEXT_COLOR;
-        this.fontSize = GoLogoLoDefaults.GOLOGOLO_DEFAULT_FONT_SIZE;
-        this.textColor = GoLogoLoDefaults.GOLOGOLO_DEFAULT_BACKGROUND_COLOR;
-        this.backgroundColor = GoLogoLoDefaults.GOLOGOLO_DEFAULT_BORDER_COLOR;
-        this.borderColor = GoLogoLoDefaults.GOLOGOLO_DEFAULT_BORDER_RADIUS;
-        this.borderThickness = GoLogoLoDefaults.GOLOGOLO_DEFAULT_BORDER_THICKNESS;
-        this.padding = GoLogoLoDefaults.GOLOGOLO_DEFAULT_PADDING;
-        this.margin = GoLogoLoDefaults.GOLOGOLO_DEFAULT_MARGIN;
-    }
+  constructor(name) {
+    super(name);
+    //this.text = GoLogoLoDefaults.GOLOGOLO_DEFAULT_TEXT_COLOR;
+    this.text = GoLogoLoDefaults.GOLOGOLO_DEFAULT_TEXT;
+    this.fontSize = GoLogoLoDefaults.GOLOGOLO_DEFAULT_FONT_SIZE;
+    //this.textColor = GoLogoLoDefaults.GOLOGOLO_DEFAULT_BACKGROUND_COLOR;
+    this.textColor = GoLogoLoDefaults.GOLOGOLO_DEFAULT_TEXT_COLOR;
+    //this.backgroundColor = GoLogoLoDefaults.GOLOGOLO_DEFAULT_BORDER_COLOR;
+    this.backgroundColor = GoLogoLoDefaults.GOLOGOLO_DEFAULT_BACKGROUND_COLOR;
+    //this.borderColor = GoLogoLoDefaults.GOLOGOLO_DEFAULT_BORDER_RADIUS;
+    this.borderColor = GoLogoLoDefaults.GOLOGOLO_DEFAULT_BORDER_COLOR;
+    this.borderWidth = GoLogoLoDefaults.GOLOGOLO_DEFAULT_BORDER_WIDTH;
+    this.padding = GoLogoLoDefaults.GOLOGOLO_DEFAULT_PADDING;
+    this.margin = GoLogoLoDefaults.GOLOGOLO_DEFAULT_MARGIN;
+  }
 
-    setText(initText) {
-        this.text = initText;
-    }
+  setText(initText) {
+    this.text = initText;
+  }
 
-    getText() {
-        return this.text;
-    }
+  getText() {
+    return this.text;
+  }
 
-    setFontSize(initFontSize) {
-        this.fontSize = initFontSize;
-    }
+  setFontSize(initFontSize) {
+    this.fontSize = initFontSize;
+  }
 
-    getFontSize() {
-        return this.fontSize;
-    }
+  getFontSize() {
+    return this.fontSize;
+  }
 
-    setTextColor(initColor) {
-        this.textColor = initColor;
-    }
+  setTextColor(initColor) {
+    this.textColor = initColor;
+  }
 
-    getTextColor() {
-        return this.textColor;
-    }
+  getTextColor() {
+    return this.textColor;
+  }
 
-    setBackgroundColor(initColor) {
-        this.backgroundColor = initColor;
-    }
+  // setBorder(initBorder) {
+  //   this.border = initBorder;
+  // }
 
-    getBackgroundColor() {
-        return this.backgroundColor;
-    }
+  // getBorder() {
+  //   return this.border;
+  // }
 
-    setBorderColor(initColor) {
-        this.borderColor = initColor;
-    }
+  setBackgroundColor(initColor) {
+    this.backgroundColor = initColor;
+  }
 
-    getBorderColor() {
-        return this.borderColor;
-    }
+  getBackgroundColor() {
+    return this.backgroundColor;
+  }
 
-    setBorderRadius(initBorderRadius) {
-        this.borderRadius = initBorderRadius;
-    }
+  setBorderColor(initColor) {
+    this.borderColor = initColor;
+  }
 
-    getBorderRadius() {
-        return this.borderRadius;
-    }
+  getBorderColor() {
+    return this.borderColor;
+  }
 
-    setBorderThickness(initBorderThickness) {
-        this.borderThickness = initBorderThickness;
-    }
+  setBorderRadius(initBorderRadius) {
+    this.borderRadius = initBorderRadius;
+  }
 
-    getBorderThickness() {
-        return this.borderThickness;
-    }
+  getBorderRadius() {
+    return this.borderRadius;
+  }
 
-    setPadding(initPadding) {
-        this.padding = initPadding;
-    }
+  setBorderWidth(initBorderWidth) {
+    this.borderWidth = initBorderWidth + "px";
+  }
 
-    getPadding() {
-        return this.padding;
-    }
+  getBorderWidth() {
+    //console.log(" im in border width");
+    return this.borderWidth;
+  }
 
-    setMargin(initMargin) {
-        this.margin = initMargin;
-    }
+  setPadding(initPadding) {
+    this.padding = initPadding;
+  }
 
-    getMargin() {
-        return this.margin;
-    }
+  getPadding() {
+    return this.padding;
+  }
+
+  setMargin(initMargin) {
+    this.margin = initMargin;
+  }
+
+  getMargin() {
+    return this.margin;
+  }
 }

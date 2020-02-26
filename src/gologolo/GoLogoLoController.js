@@ -5,7 +5,11 @@ import {
 } from "../appster/AppsterConstants.js";
 import AppsterController from "../appster/AppsterController.js";
 import GoLogoLoLogo from "../gologolo/GoLogoLoLogo.js";
-import { GoLogoLoGUIId, GoLogoLoCallback } from "./GoLogoLoConstants.js";
+import {
+  GoLogoLoGUIId,
+  GoLogoLoCallback,
+  GoLogoLoDefaults
+} from "./GoLogoLoConstants.js";
 
 export default class GoLogoLoController extends AppsterController {
   constructor() {
@@ -41,9 +45,9 @@ export default class GoLogoLoController extends AppsterController {
       this[GoLogoLoCallback.GOLOGOLO_PROCESS_FONT_SIZE_SLIDER]
     );
     this.registerEventHandler(
-      GoLogoLoGUIId.GOLOGOLO_BORDER_THICKNESS_SLIDER,
+      GoLogoLoGUIId.GOLOGOLO_BORDER_WIDTH_SLIDER,
       AppsterHTML.CHANGE,
-      this[GoLogoLoCallback.GOLOGOLO_PROCESS_THICKNESS_SLIDER]
+      this[GoLogoLoCallback.GOLOGOLO_PROCESS_WIDTH_SLIDER]
     );
     this.registerEventHandler(
       GoLogoLoGUIId.GOLOGOLO_MARGIN_SLIDER,
@@ -80,7 +84,10 @@ export default class GoLogoLoController extends AppsterController {
     // check if len of text is less than 1
     if (a.length < 1) {
       this.model.view.showIllegalNameModal();
-    } else {
+    }
+    // else if (!a || !a.trim()) {
+    // }
+    else {
       var bool = false;
       for (let i = 0; i < this.model.recentWork.length; i++) {
         let name = this.model.recentWork[i];
@@ -95,7 +102,7 @@ export default class GoLogoLoController extends AppsterController {
         this.model.editWork(b.getName());
         //b.setText = this[AppsterText.APPSTER_HOME_LOGO_TEXT];
         let currText = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
-        currText.innerHTML = AppsterText.APPSTER_HOME_LOGO_TEXT;
+        currText.innerHTML = GoLogoLoDefaults.GOLOGOLO_DEFAULT_TEXT;
       }
     }
     //Clears textfield
@@ -106,7 +113,7 @@ export default class GoLogoLoController extends AppsterController {
   };
 
   processChangeTextColor = () => {
-    console.log("change text color");
+    //console.log("change text color");
     var a = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT_COLOR_PICKER);
     //console.log(a);
     //console.log(this.model);
@@ -115,7 +122,7 @@ export default class GoLogoLoController extends AppsterController {
   };
 
   processBackgroundColor = () => {
-    console.log("change background color");
+    //console.log("change background color");
     var a = document.getElementById(
       GoLogoLoGUIId.GOLOGOLO_BACKGROUND_COLOR_PICKER
     );
@@ -131,14 +138,14 @@ export default class GoLogoLoController extends AppsterController {
   processBorderColor = () => {
     //console.log("change border color!!!");
     var a = document.getElementById(GoLogoLoGUIId.GOLOGOLO_BORDER_COLOR_PICKER);
-    console.log(a.value);
+    // console.log(a.value);
     //console.log(this.model);
     this.model.recentWork[0].setBorderColor(a.value);
     this.model.view.loadWorkStyle(this.model.recentWork[0]);
   };
 
   processRadiusSlider = () => {
-    console.log("processRadiusSlider");
+    // console.log("processRadiusSlider");
     var a = document.getElementById(
       GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER
     );
@@ -147,31 +154,30 @@ export default class GoLogoLoController extends AppsterController {
   };
 
   processFontSizeSlider = () => {
-    console.log("processFontSizeSlider");
+    // console.log("processFontSizeSlider");
     var a = document.getElementById(GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER);
-    console.log(a.value);
     this.model.recentWork[0].setFontSize(a.value);
     this.model.view.loadWorkStyle(this.model.recentWork[0]);
   };
 
-  processThicknessSlider = () => {
+  processWidthSlider = () => {
     console.log("processThicknessSlider");
-    var a = document.getElementById(
-      GoLogoLoGUIId.GOLOGOLO_BORDER_THICKNESS_SLIDER
-    );
-    this.model.recentWork[0].setBorderThickness(a.value);
+    var a = document.getElementById(GoLogoLoGUIId.GOLOGOLO_BORDER_WIDTH_SLIDER);
+    console.log(a.value);
+    this.model.recentWork[0].setBorderWidth(a.value);
+    console.log(this.model.recentWork[0]);
     this.model.view.loadWorkStyle(this.model.recentWork[0]);
   };
 
   processPaddingSlider = () => {
-    console.log("processPaddingSlider");
+    // console.log("processPaddingSlider");
     var a = document.getElementById(GoLogoLoGUIId.GOLOGOLO_PADDING_SLIDER);
     this.model.recentWork[0].setPadding(a.value);
     this.model.view.loadWorkStyle(this.model.recentWork[0]);
   };
 
   processMarginSlider = () => {
-    console.log("processMarginSlider");
+    // console.log("processMarginSlider");
     var a = document.getElementById(GoLogoLoGUIId.GOLOGOLO_MARGIN_SLIDER);
     this.model.recentWork[0].setMargin(a.value);
     this.model.view.loadWorkStyle(this.model.recentWork[0]);
@@ -190,7 +196,7 @@ export default class GoLogoLoController extends AppsterController {
       this.model.view.showIllegalNameModal();
     } else {
       this.model.recentWork[0].setText(a);
-      console.log("processEditText");
+      // console.log("processEditText");
       let currText = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
       currText.innerHTML = a;
       //this.model.updateText(this.model.recentWork[0]);
