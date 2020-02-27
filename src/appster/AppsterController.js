@@ -220,6 +220,9 @@ export default class AppsterController {
    *
    */
   processCancelButton = () => {
+    document.getElementById(
+      AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD
+    ).value = "";
     this.model.view.hideCreateNewWorkModal();
   };
   // when user hits enter button in create new work modal

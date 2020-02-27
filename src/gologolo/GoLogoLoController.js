@@ -209,6 +209,9 @@ export default class GoLogoLoController extends AppsterController {
   };
 
   processEditTextCancel = () => {
+    document.getElementById(
+      GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_MODAL_TEXTFIELD
+    ).value = "";
     this.model.view.hideEditTextModal();
   };
 }

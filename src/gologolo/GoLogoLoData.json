@@ -33,12 +33,14 @@
     { "appster_illegal_name_modal_header": "Illegal Name" },
     { "appster_illegal_name_modal_ok_button_text": " Ok" },
     { "appster_illegal_name_modal_footer_text": " TRY AGAIN!" },
-    { "appster_illegal_name_modal_prompt_text": "Illegal String Good Sir" },
+    { "appster_illegal_name_modal_prompt_text": "Illegal Length" },
 
-    { "gologolo_edit_text_modal_prompt_text": "Enter new name for logo" },
+    { "gologolo_edit_text_modal_prompt_text": "Enter new text" },
     { "gologolo_edit_text_modal_enter_button_text": "Enter" },
     { "gologolo_edit_text_modal_cancel_button_text": "Cancel" },
-    { "gologolo_edit_text_modal_footer_text": " :0 " },
+    {
+      "gologolo_edit_text_modal_footer_text": " Must be at least 1 char long "
+    },
 
     { "gologolo_edit_text_text": "Edit Text &#x270e;" },
     { "gologolo_font_size_text": "Font Size: " },
